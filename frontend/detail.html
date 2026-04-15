@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Recipe Details</title>
+</head>
+<body>
+    <nav>
+        <a href="recipes.html" class="back-btn">← Back to Gallery</a>
+        <h1 class="logo">🍴 Recipe Detail</h1>
+        <div class="nav-actions">
+            <a href="index.html" style="color:white; text-decoration:none; margin-right:15px; font-weight:600;">Home</a>
+            <a href="add-recipe.html" style="color:white; text-decoration:none; margin-right:15px; font-weight:600;">Add Recipe</a>
+            <div class="dark-toggle-container" onclick="toggleDarkMode()" style="margin-right:15px;">
+                <div class="toggle-switch">
+                    <div class="toggle-knob"></div>
+                </div>
+            </div>
+            <button class="share-btn" onclick="shareRecipe()">Share</button>
+        </div>
+    </nav>
+
+    <section class="detail">
+    <img id="img" class="detail-img" style="cursor: zoom-in;" onclick="openLightbox()">
+    <h2 id="title"></h2>
+    <p id="cat" style="color: #ff6b6b; font-weight: bold; margin-bottom: 15px;"></p>
+    
+    <div class="recipe-info">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h3>Ingredients</h3>
+            <div class="servings-control" style="font-weight:bold; color:var(--text-muted, #555);">
+                Servings: 
+                <button onclick="changeServings(-1)" style="padding:2px 8px; border-radius:5px; border:none; background:#ddd; cursor:pointer;">-</button>
+                <span id="servingCount">4</span>
+                <button onclick="changeServings(1)" style="padding:2px 8px; border-radius:5px; border:none; background:#ff6b6b; color:white; cursor:pointer;">+</button>
+            </div>
+        </div>
+        <div id="ingredientsList" class="checklist"></div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top: 20px;">
+            <h3>How to Cook</h3>
+            <button onclick="readRecipe()" id="readBtn" style="padding: 8px 12px; background: #ffb703; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">🔊 Read Steps</button>
+        </div>
+        <div id="instructionsText"></div>
+        
+        <!-- NEW REVIEWS SECTION -->
+        <div class="review-section">
+            <h3>Community Reviews</h3>
+            <div id="reviewsContainer">
+                <p>No reviews yet. Be the first to review!</p>
+            </div>
+            
+            <div class="review-form">
+                <h4>Leave a Review</h4>
+                <input type="text" id="reviewerName" placeholder="Your Name">
+                <div class="star-rating">
+                    <label>Rating:</label>
+                    <select id="reviewRating">
+                        <option value="5">⭐⭐⭐⭐⭐ (5/5)</option>
+                        <option value="4">⭐⭐⭐⭐ (4/5)</option>
+                        <option value="3">⭐⭐⭐ (3/5)</option>
+                        <option value="2">⭐⭐ (2/5)</option>
+                        <option value="1">⭐ (1/5)</option>
+                    </select>
+                </div>
+                <textarea id="reviewComment" placeholder="How did it turn out?"></textarea>
+                <label style="font-size: 13px; color: #666;">Upload a photo (optional):</label>
+                <input type="file" id="reviewImage" accept="image/*">
+                <button onclick="submitReview()">Post Review</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Lightbox Overlay -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <img id="lightboxImg" src="">
+    </div>
+
+    <script src="detail.js"></script>
+    <script>
+        // Inline script to prevent FOUC for dark mode
+        if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark-mode");
+    </script>
+</body>
+</html>

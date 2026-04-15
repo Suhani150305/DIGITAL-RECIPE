@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Recipes | Digital Recipe Book</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left"></div>
+        <div class="logo">🍴 RecipeBook</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="recipes.html">Food Gallery</a></li>
+            <li><a href="add-recipe.html">Add Recipe</a></li>
+            <li>
+                <div class="dark-toggle-container" onclick="toggleDarkMode()">
+                    <div class="toggle-switch">
+                        <div class="toggle-knob"></div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="search">
+        <h2>Find Your Favorite</h2>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search by name...">
+            <input type="text" id="ingredientInput" placeholder="Search by ingredient (e.g. Tomato)">
+        </div>
+    </section>
+
+
+
+    <section class="recipes">
+        <h2 style="margin-bottom: 30px; color: #ff6b6b;">Our Collection</h2>
+        <div class="recipe-container">
+            <p id="loadingText">Loading Recipes...</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Digital Recipe Book | Designed by Nidhi Patel</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+        }
+        if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark-mode");
+    </script>
+</body>
+
+</html>

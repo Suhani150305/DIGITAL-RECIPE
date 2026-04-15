@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Recipe | Digital Recipe Book</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-left"></div>
+        <div class="logo">🍴 RecipeBook</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="recipes.html">Food Gallery</a></li>
+            <li><a href="add-recipe.html">Add Recipe</a></li>
+            <li>
+                <div class="dark-toggle-container" onclick="toggleDarkMode()">
+                    <div class="toggle-switch">
+                        <div class="toggle-knob"></div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="add-recipe">
+        <h2>Add a New Recipe</h2>
+        <div class="form-grid">
+            <input type="text" id="name" placeholder="Recipe Name">
+
+            <select id="category">
+                <option value="Indian">Indian</option>
+                <option value="Italian">Italian</option>
+                <option value="Dessert">Dessert</option>
+                <option value="Healthy">Healthy</option>
+                <option value="Fast Food">Fast Food</option>
+            </select>
+
+            <label style="font-size: 12px; color: #666; text-align: left; margin-bottom: -10px;">Upload Food
+                Image:</label>
+            <input type="file" id="imageInput" accept="image/*">
+
+            <textarea id="desc" placeholder="Short Description (e.g. Spicy and delicious)"></textarea>
+            <textarea id="ingredients"
+                placeholder="Ingredients (comma separated: 1 cup Milk, 2 tbsp Sugar, 500g Flour)"></textarea>
+            <textarea id="instructions" placeholder="Cooking Instructions (Step by step)"></textarea>
+
+            <button class="post-btn" onclick="addRecipe()">Post Recipe</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Digital Recipe Book | Designed by Nidhi Patel</p>
+    </footer>
+
+    <script src="add-recipe.js"></script>
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+        }
+        if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark-mode");
+    </script>
+
+</body>
+
+</html>
